@@ -88,3 +88,5 @@ Console.WriteLine(str);
 ---
 
 This project is inspired by [xNet](https://github.com/X-rus/xNet); the project is no longer maintained by its creator and even many forks of the project, such as [Leaf.xNet](https://github.com/csharp-leaf/Leaf.xNet). One of the main reasons why xNet was treasured was for its support of many proxy protocols, such as Socks-4 and Socks-5, and how simple it was to use. Hopefully, this project can be an excellent replacement for one part of the project — simple proxy usage.
+
+Please check my profile if you'd like to contact me.
