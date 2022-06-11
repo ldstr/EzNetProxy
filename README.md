@@ -9,7 +9,7 @@ A library to simplify proxy usage in .NET 6+
 ---
 
 ### Usage
-1. Install package via Nuget or some other method 
+1. Install package via [Nuget](https://www.nuget.org/packages/EzNetProxy) or some other method 
 2. Import modules: `using EzNetProxy;`
 3. Use your preferred way to parse the proxy connection information.
 
