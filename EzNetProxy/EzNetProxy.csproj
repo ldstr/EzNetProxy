@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <DebugType>embedded</DebugType>
+	  
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/Plot1337/EzNetProxy</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Plot1337/EzNetProxy</RepositoryUrl>
+    <Copyright>Copyright (c) Plot1337 2022</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <Authors>Plot1337</Authors>
+    <Version>1.0.0.0</Version>
+    <PackageId>EzNetProxy</PackageId>
+    <Description>A library to simplify proxy usage in .NET</Description>
+    <PackageTags>csharp, dotnet, proxy, socks, socks-proxy</PackageTags>
+	  
+    <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>..\README.md</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
