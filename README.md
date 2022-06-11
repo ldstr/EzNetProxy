@@ -67,7 +67,7 @@ Here is a simple example:
 
 ```csharp
 // backbone connection; ipv4; 104.227.XXX.XXX
-var proxy = ProxyClient.Parse(PeoxyType.HTTP, "q.webshare.io:80");
+var proxy = ProxyClient.Parse(ProxyType.HTTP, "q.webshare.io:80");
 
 var httpClientHandler = new HttpClientHandler
 {
