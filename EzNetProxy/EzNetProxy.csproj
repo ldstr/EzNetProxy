@@ -22,8 +22,6 @@
     <PackageTags>csharp, dotnet, proxy, socks, socks-proxy</PackageTags>
 	  
     <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
-    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <PackageLicenseFile>..\README.md</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
