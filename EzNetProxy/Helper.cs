@@ -1,4 +1,4 @@
-﻿using EzNetProxy.Modals;
+using EzNetProxy.Modals;
 using EzNetProxy.Exceptions;
 
 namespace EzNetProxy
@@ -23,12 +23,6 @@ namespace EzNetProxy
         {
             if (string.IsNullOrEmpty(input))
                 throw new ArgumentNullException(nameof(input));
-
-            /*
-             * ip:port
-             * ip:port:user:pw
-             * user:pw@ip:port
-             */
 
             const char sp = '@';
 
