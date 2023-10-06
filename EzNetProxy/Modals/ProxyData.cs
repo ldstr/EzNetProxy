@@ -1,15 +1,14 @@
-﻿namespace EzNetProxy.Modals
+﻿namespace EzNetProxy.Modals;
+
+public class ProxyData
 {
-    public class ProxyData
-    {
-        public ProxyType Type { get; set; }
+    public ProxyType Type { get; set; }
 
-        public string? Ip { get; set; }
+    public string? Address { get; set; }
 
-        public int Port { get; set; }
+    public int Port { get; set; }
 
-        public string? Username { get; set; }
+    public string? Username { get; set; }
 
-        public string? Password { get; set; }
-    }
+    public string? Password { get; set; }
 }

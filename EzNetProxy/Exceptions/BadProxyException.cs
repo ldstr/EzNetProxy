@@ -1,9 +1,8 @@
-﻿namespace EzNetProxy.Exceptions
-{
-    internal class BadProxyException : Exception
-    {
-        public BadProxyException() : base("Invalid proxy format!") { }
+﻿namespace EzNetProxy.Exceptions;
 
-        public BadProxyException(string message) : base (message) { }
-    }
+internal class BadProxyException : Exception
+{
+    public BadProxyException() : base("Invalid proxy!") { }
+
+    public BadProxyException(string message) : base(message) { }
 }

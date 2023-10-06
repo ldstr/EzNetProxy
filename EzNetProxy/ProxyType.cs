@@ -1,10 +1,9 @@
-﻿namespace EzNetProxy
+﻿namespace EzNetProxy;
+
+public enum ProxyType
 {
-    public enum ProxyType
-    {
-        HTTP,
-        Socks4,
-        Socks4A,
-        Socks5
-    }
+    HTTP,
+    Socks4,
+    Socks4A,
+    Socks5
 }
