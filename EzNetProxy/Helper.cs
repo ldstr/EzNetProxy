@@ -35,14 +35,11 @@ internal class Helper
                 sp, SPLIT_OPTS
                 );
 
-            CheckValidity(split);
-
             string[]
                 creds = SplitStr(split[0]),
                 proxy = SplitStr(split[1]);
 
             TryGetProxyData(proxy, ref data);
-            CheckValidity(creds);
 
             data.Username = creds[0];
             data.Password = creds[1];
@@ -50,8 +47,6 @@ internal class Helper
         else
         {
             string[] split = SplitStr(input);
-
-            CheckValidity(split);
             TryGetProxyData(split, ref data);
 
             if (split.Length >= 4)
@@ -60,12 +55,6 @@ internal class Helper
                 data.Password = split[3];
             }
         }
-    }
-
-    private static void CheckValidity(string[] input)
-    {
-        if (input.Length < 2)
-            throw new BadProxyException();
     }
 
     private static void TryGetProxyData(
@@ -93,11 +82,7 @@ internal class Helper
         SPLIT_OPTS
         );
 
-    private static readonly char[] _splitters = {
-        ':',
-        ';',
-        '|'
-    };
+    private static readonly char[] _splitters = { ':', ';', '|' };
 
     private const StringSplitOptions SPLIT_OPTS =
         StringSplitOptions.RemoveEmptyEntries
