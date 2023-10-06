@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "EzNetProxy.ProxyChecker": {
+      "commandName": "Project",
+      "commandLineArgs": "\"localhost:8888\""
+    }
+  }
+}
