@@ -6,7 +6,7 @@ namespace EzNetProxy;
 
 public class ProxyClient
 {
-    public static WebProxy DebugFiddler() => Parse(new ProxyData
+    public static readonly WebProxy DebugFiddler = CreateProxy(new()
     {
         Type = ProxyType.HTTP,
         Address = "127.0.0.1",
@@ -24,31 +24,32 @@ public class ProxyClient
         static BadProxyException Exp() =>
             new("Proxy protocol was not provided!");
 
-        if (!proxy.Contains(prt))
-            throw Exp();
-
-        string[] split = proxy.Split(
+        int index = proxy.IndexOf(
             prt,
-            StringSplitOptions.RemoveEmptyEntries
+            StringComparison.Ordinal
             );
 
-        if (split.Length != 2)
+        if (index == -1)
             throw Exp();
 
         ProxyData data = new()
         {
-            Type = split[0].ToLower() switch
+            Type = proxy[..index].ToLower() switch
             {
                 "http" => ProxyType.HTTP,
                 "socks4" => ProxyType.Socks4,
                 "socks4a" => ProxyType.Socks4A,
                 "socks5" => ProxyType.Socks5,
-                _ => throw new NotImplementedException("Unsupported protocol!"),
+                _ => throw new BadProxyException(),
             }
         };
 
-        Helper.ExtractProxyData(split[1], ref data);
-        return Parse(data);
+        Helper.ExtractProxyData(
+            proxy[(index + prt.Length)..],
+            ref data
+            );
+
+        return CreateProxy(data);
     }
 
     public static WebProxy Parse(ProxyType type, string? proxy)
@@ -59,10 +60,10 @@ public class ProxyClient
         };
 
         Helper.ExtractProxyData(proxy, ref data);
-        return Parse(data);
+        return CreateProxy(data);
     }
 
-    public static WebProxy Parse(ProxyData data)
+    private static WebProxy CreateProxy(ProxyData data)
     {
         WebProxy proxy = new()
         {
@@ -71,19 +72,17 @@ public class ProxyClient
         };
 
         string?
-            user = data.Username,
-            pw = data.Password;
+            username = data.Username,
+            password = data.Password;
 
         if (
-            string.IsNullOrEmpty(user) ||
-            string.IsNullOrEmpty(pw)
-            ) return proxy;
-
-        proxy.Credentials = new NetworkCredential
-        {
-            UserName = user,
-            Password = pw
-        };
+            !string.IsNullOrEmpty(username)
+            && !string.IsNullOrEmpty(password)
+            ) proxy.Credentials = new NetworkCredential
+            {
+                UserName = username,
+                Password = password
+            };
 
         return proxy;
     }
