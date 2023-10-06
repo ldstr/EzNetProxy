@@ -1,10 +1,10 @@
 # EzNetProxy
 
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
-![dotnet6.0](https://img.shields.io/badge/.NET-6.0-blue?style=for-the-badge)
+![dotnet6.0](https://img.shields.io/badge/.NET-7.0-blue?style=for-the-badge)
 ![License-MIT](https://img.shields.io/badge/License-MIT-Green?style=for-the-badge)
 
-A library to simplify proxy usage in .NET 6+
+A library to simplify proxy usage in .NET 7+
 
 ---
 
@@ -14,7 +14,7 @@ A library to simplify proxy usage in .NET 6+
 3. Use your preferred way to parse the proxy connection information.
 
 ### Notes:
-- Requires .NET 6+
+- Requires .NET 7+
 - Backbone connections supported
 - ipv6 works (backbone connection)
 
@@ -35,7 +35,7 @@ var socks5Proxy = ProxyClient.Parse("socks5://host:port");
 
 Method #2:
 ```csharp
-string proxy = ...;
+string proxy = "123.123.123.123:8080";
 var httpProxy = ProxyClient.Parse(ProxyType.HTTP, proxy);
 ...
 ```
@@ -44,7 +44,7 @@ Method #3:
 ```csharp
 using EzNetProxy.Modals;
 
-var data = new ProxyData
+ProxyData data = new()
 {
     Type = ProxyType.HTTP,
     Ip = "pornhub.com",
@@ -69,16 +69,15 @@ Here is a simple example:
 // backbone connection; ipv4; 104.227.XXX.XXX
 var proxy = ProxyClient.Parse(ProxyType.HTTP, "q.webshare.io:80");
 
-var httpClientHandler = new HttpClientHandler
+HttpClientHandler httpClientHandler = new()
 {
   Proxy = proxy,
   UseProxy = true // IMPORTANT!
 };
 
-using var client = new HttpClient(httpClientHandler, true);
+using HttpClient client = new(httpClientHandler, true);
 
-var res = await client.GetAsync("https://wtfismyip.com/text");
-var str = await res.Content.ReadAsStringAsync();
+var str = await client.GetStringAsync("https://wtfismyip.com/text");
 
 Console.WriteLine(str);
 // str = 104.227.XXX.XXX
